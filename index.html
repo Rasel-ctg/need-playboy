@@ -2,256 +2,347 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Men BD - Premium Community</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ROYAL MEN - Exclusive Service</title>
+    <meta name="theme-color" content="#0a0a0a">
     
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Hind+Siliguri:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href='data:application/manifest+json;base64,ewogICJuYW1lIjogIlJveWFsIE1lbiIsCiAgInNob3J0X25hbWUiOiAiUk9ZQUwiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzAwMDAwMCIsCiAgInRoZW1lX2NvbG9yIjogIiNmZjAwNDAiLAogICJpY29ucyI6IFtdCn0='>
+
     <style>
         :root {
-            --primary: #00d2ff;
-            --secondary: #9d50bb;
-            --accent: #26a5e4;
-            --glass: rgba(255, 255, 255, 0.07);
-            --border: rgba(255, 255, 255, 0.15);
+            --primary: #ff0040; /* Electric Red */
+            --primary-glow: rgba(255, 0, 64, 0.5);
+            --dark: #050505;
+            --card-bg: rgba(20, 20, 20, 0.90);
+            --text-light: #e0e0e0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
+        
         body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background: #050510;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        /* Dynamic Animated Background */
-        .bg-animate {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a1a3a 0%, #050510 100%);
-        }
-
-        .blob {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            filter: blur(100px);
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: float 15s infinite alternate;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(100px, 150px); }
-        }
-
-        /* Main Glass Container */
-        .container {
-            width: 95%;
-            max-width: 420px;
-            padding: 30px 20px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            animation: slideUp 0.8s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Logo Animation */
-        .logo-box {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            margin: 0 auto 15px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 210, 255, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
-        }
-
-        h1 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 32px;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: #aaa;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        /* Modern Feature Items */
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255,255,255,0.05);
-            padding: 12px 15px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            text-align: left;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary);
-            background: rgba(255,255,255,0.08);
-            transform: translateX(5px);
-        }
-
-        .feature-card i {
-            color: var(--primary);
-            font-size: 18px;
-        }
-
-        .feature-card span {
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* Glow Telegram Button */
-        .btn-join {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 16px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 18px;
-            gap: 10px;
-            position: relative;
+            background-color: var(--dark);
+            color: white;
             overflow: hidden;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(38, 165, 228, 0.4);
+            height: 100vh;
+            width: 100vw;
         }
 
-        .btn-join:hover {
-            letter-spacing: 1px;
-            box-shadow: 0 8px 25px rgba(38, 165, 228, 0.6);
+        /* --- Background Video --- */
+        .bg-video {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -2; opacity: 0.5;
+        }
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, #000 10%, rgba(255,0,64,0.1) 50%, #000 90%);
+            z-index: -1; backdrop-filter: blur(4px);
         }
 
-        .btn-join::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.1);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
+        /* --- App Structure (Views) --- */
+        .app-view {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow-y: auto; padding: 20px;
+            display: none;
+            flex-direction: column;
+            animation: fadeIn 0.4s ease;
+        }
+        .active-view { display: flex; }
+
+        /* --- Typography & Components --- */
+        .brand-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.5rem; text-transform: uppercase;
+            background: linear-gradient(45deg, #fff, var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 800; text-align: center; margin-bottom: 5px;
+            filter: drop-shadow(0 0 10px var(--primary-glow));
         }
 
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .glass-panel {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 25px; margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
         }
 
-        .trust-badge {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+        .btn-action {
+            background: var(--primary);
+            color: white; border: none; padding: 16px; width: 100%;
+            border-radius: 50px; font-size: 1.1rem; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 0 20px var(--primary-glow);
+            cursor: pointer; transition: 0.3s; margin-top: 15px;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .btn-action:hover { transform: scale(1.02); box-shadow: 0 0 30px var(--primary); }
+        
+        .btn-outline {
+            background: transparent; border: 2px solid var(--primary);
+            color: white; padding: 12px; width: 100%; border-radius: 50px;
+            margin-top: 10px; font-weight: 600; cursor: pointer;
         }
 
-        .trust-badge span i { color: #2ecc71; margin-right: 4px; }
+        /* --- Plan Cards --- */
+        .plan-card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 1px solid #333; border-radius: 12px; padding: 20px;
+            margin-bottom: 15px; position: relative; overflow: hidden;
+            transition: 0.3s; cursor: pointer;
+        }
+        .plan-card:hover { border-color: var(--primary); }
+        .plan-price { font-size: 2rem; font-family: 'Rajdhani', sans-serif; color: var(--primary); font-weight: bold; }
+        .badge {
+            position: absolute; top: 10px; right: 10px;
+            background: var(--primary); color: white; font-size: 0.7rem;
+            padding: 3px 8px; border-radius: 4px; font-weight: bold;
+        }
 
+        /* --- Animations --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 64, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 0, 64, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 64, 0); } }
+
+        .nav-back { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #fff; z-index: 10; cursor: pointer; }
+        
+        /* Loading Overlay */
+        #loader {
+            position: fixed; inset: 0; background: #000; z-index: 9999;
+            display: none; align-items: center; justify-content: center; flex-direction: column;
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-animate">
-        <div class="blob" style="top: 10%; left: 10%;"></div>
-        <div class="blob" style="bottom: 10%; right: 10%; background: var(--secondary);"></div>
-    </div>
+    <!-- 🔥 Background Video -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="https://www.pexels.com/download/video/5805836/" type="video/mp4">
+    </video>
+    <div class="bg-overlay"></div>
 
-    <div class="container">
-        <div class="logo-box">
-            <i class="fab fa-telegram-plane"></i>
+    <!-- 🟢 VIEW 1: HOME -->
+    <div id="view-home" class="app-view active-view" style="justify-content: center;">
+        <div style="text-align: center;">
+            <i class="fas fa-crown fa-3x" style="color: var(--primary);"></i>
+            <h1 class="brand-title">ROYAL MEN BD</h1>
+            <p style="letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; color: #aaa;">Premium Companionship Agency</p>
         </div>
 
-        <h1>Royal Men BD</h1>
-        <p class="subtitle">আপনার ক্যারিয়ারের সঠিক গাইডলাইন এবং নিশ্চিত আয়ের জন্য আজই আমাদের প্রিমিয়াম কমিউনিটিতে যোগ দিন।</p>
-
-        <div class="feature-list">
-            <div class="feature-card">
-                <i class="fas fa-money-bill-wave"></i>
-                <span>প্রতি কাজে ২০০০+ টাকা ও যাতায়াত খরচ</span>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-calendar-check"></i>
-                <span>১ দিনে ২-৩ টি কাজ করার সুবর্ণ সুযোগ</span>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-bolt"></i>
-                <span>অত্যন্ত সহজ রেজিস্ট্রেশন প্রক্রিয়া</span>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-headset"></i>
-                <span>২৪/৭ ডেডিকেটেড সাপোর্ট সিস্টেম</span>
-            </div>
-        </div>
-
-        <a href="https://t.me/+rl7HtSyCI4gyNmFl" class="btn-join">
-            <i class="fab fa-telegram"></i> টেলিগ্রামে জয়েন করুন
-        </a>
-
-        <div class="trust-badge">
-            <span><i class="fas fa-check-circle"></i> ৫০০০+ মেম্বার</span>
-            <span><i class="fas fa-shield-alt"></i> ১০০% নিরাপদ</span>
+        <div class="glass-panel" style="margin-top: 40px; text-align: center;">
+            <i class="fas fa-exclamation-triangle" style="color: var(--primary); font-size: 2rem; margin-bottom: 10px;"></i>
+            <h3 style="margin-bottom: 10px;">১৮+ সতর্কীকরণ</h3>
+            <p style="color: #ccc; font-size: 0.95rem;">
+                এই প্ল্যাটফর্মটি শুধুমাত্র প্রাপ্তবয়স্কদের জন্য। এখানে ডিসক্রিট এবং প্রিমিয়াম সার্ভিস প্রদান করা হয়।
+            </p>
+            <button class="btn-action pulse" onclick="navigate('view-about')">
+                প্রবেশ করুন <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
+
+    <!-- 🟢 VIEW 2: ABOUT -->
+    <div id="view-about" class="app-view">
+        <i class="fas fa-arrow-left nav-back" onclick="navigate('view-home')"></i>
+        
+        <div style="margin-top: 50px;">
+            <h2 style="color: var(--primary); text-align: center; font-family: 'Rajdhani';">আমাদের প্ল্যাটফর্ম</h2>
+            
+            <div class="glass-panel" style="margin-top: 20px;">
+                <p>আমাদের প্ল্যাটফর্মে যারা কাজ করতে চান, তারা খুব সহজেই রেজিস্ট্রেশন করে সঙ্গে সঙ্গে কাজ শুরু করতে পারবেন। এখানে তিন ধরনের কাজের অপশন রয়েছে—আপনার সুবিধা অনুযায়ী যেকোনোটি বেছে নিতে পারবেন।।</p>
+                <ul style="margin: 15px 0; list-style: none;">
+                    <li><i class="fas fa-check" style="color: var(--primary);"></i> রেজিস্ট্রেশন সম্পন্ন হলে আপনার সেকশন মতো কাজ অ্যাক্টিভ হয়ে যাবে</li>
+                    <li><i class="fas fa-check" style="color: var(--primary);"></i> কাজ করতে আর কোনো অতিরিক্ত খরচ লাগবে না</li>
+        <li><i class="fas fa-check" style="color: var(--primary);"></i> সাপোর্ট টিম থেকে সম্পূর্ণ নির্দেশনা পাবেন</li>
+                    <li><i class="fas fa-check" style="color: var(--primary);"></i> চাইলে পরে কাজের ক্যাটাগরি পরিবর্তন করা যাবে</li>
+                </ul>
+            </div>
+
+
+<div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin: 15px 0; font-family: 'Hind Siliguri', sans-serif;">
+
+    <div class="glass-panel" style="display: flex; flex-direction: column; padding: 12px 18px; border-radius: 10px; background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.12); width: 100%; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #00d2ff; margin: 0; font-size: 17px; font-weight: 600;">ঢাকার ভেতরের কাজ</h3>
+            <span style="color: #fff; font-weight: bold; font-size: 18px;">৳২০০</span>
+        </div>
+        <p style="color: #bbb; margin: 3px 0 0 0; font-size: 13px;">লোকাল কাজ (ঢাকার ভিতরে)। রেজিস্ট্রেশন হলে সাথে সাথেই কাজ শুরু।</p>
+    </div>
+
+    <div class="glass-panel" style="display: flex; flex-direction: column; padding: 12px 18px; border-radius: 10px; background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.12); width: 100%; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #ff9f43; margin: 0; font-size: 17px; font-weight: 600;">ঢাকার বাইরের কাজ</h3>
+            <span style="color: #fff; font-weight: bold; font-size: 18px;">৳৩০০</span>
+        </div>
+        <p style="color: #bbb; margin: 3px 0 0 0; font-size: 13px;">বাংলাদেশের যেকোনো জেলা থেকে আপনি এই কাজটি করতে পারবেন।</p>
+    </div>
+
+    <div class="glass-panel" style="display: flex; flex-direction: column; padding: 12px 18px; border-radius: 10px; background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.12); width: 100%; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #2ecc71; margin: 0; font-size: 17px; font-weight: 600;">বিদেশের কাজ (প্রবাসী)</h3>
+            <span style="color: #fff; font-weight: bold; font-size: 18px;">৳১৫০০</span>
+        </div>
+        <p style="color: #bbb; margin: 3px 0 0 0; font-size: 13px;">শুধুমাত্র প্রবাসীদের জন্য। বিদেশি ম্যামদের সার্ভিস দেওয়ার কাজ।</p>
+    </div>
+
+</div>
+
+
+
+            <div class="glass-panel" style="border-left: 3px solid var(--primary);">
+                <h4 style="color: var(--primary);">কেন রেজিস্ট্রেশন ফ্রি নয়??</h4>
+                <p style="font-size: 0.9rem; color: #bbb; margin-top: 5px;">
+                    আমাদের এজেন্সিকে কাজ সংগ্রহ, বিদেশি ক্লায়েন্ট ম্যানেজ, নিয়মিত বিজ্ঞাপন (Ads) চালানো, সাপোর্ট টিম পরিচালনা, এবং সিস্টেম মেইনটেইন করতে নিয়মিত খরচ বহন করতে হয়। এইসব অফিসিয়াল খরচ কাভার করার জন্যই রেজিস্ট্রেশন ফি নেওয়া হয়। এটি কোনো ব্যক্তিগত চার্জ নয়।
+
+যদি কারো কাছে এই চার্জ সমস্যা মনে হয়, তবে প্ল্যাটফর্ম ব্যবহার না করলেও সমস্যা নেই — আমরা শুধুমাত্র সেবা দেই যারা কাজ করতে সিরিয়াস তাদের। 
+                </p>
+            </div>
+
+            <button class="btn-action" onclick="navigate('view-plans')">রেজিস্ট্রেশন করুন</button>
+        </div>
+    </div>
+
+    <!-- 🟢 VIEW 3: PLANS -->
+    <div id="view-plans" class="app-view">
+        <i class="fas fa-arrow-left nav-back" onclick="navigate('view-about')"></i>
+        
+        <div style="margin-top: 50px;">
+            <h2 style="text-align: center; margin-bottom: 5px;">মেম্বারশিপ প্ল্যান</h2>
+            <p style="text-align: center; color:#aaa; margin-bottom: 25px;">আপনার লোকেশন অনুযায়ী বেছে নিন</p>
+
+            <!-- Plan 1 -->
+            <div class="plan-card" onclick="openDetails('dhaka')">
+                <h3>ঢাকার ভিতরে কাজ</h3>
+                <div class="plan-price">২০০৳</div>
+                <p style="font-size: 0.8rem; color: #888;">লোকাল কাজ (ঢাকার ভিতরে)। সাথে সাথেই কাজ শুরু।</p>
+                <button class="btn-outline" style="font-size:0.8rem;">JOIN NOW</button>
+            </div>
+
+            <!-- Plan 2 -->
+            <div class="plan-card" onclick="openDetails('bd')" style="border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,64,0.2);">
+                <div class="badge">POPULAR</div>
+                <h3>ঢাকার বাহিরের কাজ</h3>
+                <div class="plan-price">৩০০৳</div>
+                <p style="font-size: 0.8rem; color: #888;">সারা বাংলাদেশ। যেকোনো জেলাতেই কাজ করতে পারবেন।</p>
+                <button class="btn-action" style="margin-top:10px; font-size:0.8rem; padding: 10px;">JOIN NOW</button>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="plan-card" onclick="openDetails('abroad')">
+                <div class="badge" style="background: gold; color: black;">VIP</div>
+                <h3>দেশের বাহিরে কাজ</h3>
+                <div class="plan-price">১৫০০৳</div>
+                <p style="font-size: 0.8rem; color: #888;">সৌদি, দুবাই, কাতার, কুয়েত, ইউরোপ ও আমেরিকা।</p>
+                <button class="btn-outline" style="font-size:0.8rem;">JOIN NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🟢 VIEW 4: DETAILS & REDIRECT -->
+    <div id="view-details" class="app-view">
+        <i class="fas fa-arrow-left nav-back" onclick="navigate('view-plans')"></i>
+        
+        <div style="margin-top: 50px; text-align: center;">
+            <div id="detail-content">
+                <!-- Javascript will fill this -->
+            </div>
+            
+            <div class="glass-panel" style="text-align: left; margin-top: 20px;">
+                <h4 style="border-bottom: 1px solid #333; padding-bottom: 5px;">নিয়মাবলী:</h4>
+                <ul style="font-size: 0.9rem; color: #ccc; margin-top: 10px; padding-left: 20px;">
+                    <li>প্রতি মাসে ন্যূনতম একটি কাজ অবশ্যই সম্পন্ন করতে হবে।</li>
+                    <li>বিশেষ অনুমতি ছাড়া এক মাস কাজ বন্ধ রাখলে মেম্বারশিপ বাতিল।</li>
+                    <li>পেমেন্ট সম্পন্ন হওয়ার পর অটোমেটিক গ্রুপ লিংক পাবেন।</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 10px;">নিরাপদ পেমেন্ট গেটওয়ে</p>
+                <img src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" style="width: 200px; opacity: 0.8;">
+            </div>
+
+            <button id="payBtn" class="btn-action pulse" onclick="proceedToPayment()">
+                পেমেন্ট করুন ও গ্রুপে জয়েন করুন <i class="fas fa-external-link-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <i class="fas fa-circle-notch fa-spin fa-3x" style="color: var(--primary);"></i>
+        <p style="color: white; margin-top: 20px; letter-spacing: 1px;">পেমেন্ট গেটওয়েতে নেওয়া হচ্ছে...</p>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        // Data & Links
+        const plans = {
+            dhaka: {
+                title: "ঢাকার ভিতরে কাজ",
+                amount: "200",
+                desc: "শুধুমাত্র ঢাকা ভিত্তিক কাজ। এই প্ল্যাটফর্মে আপনি শুধুমাত্র ঢাকার মধ্যে প্রযোজ্য কাজগুলো পাবেন।",
+                link: "https://dash.zinipay.com/royal-men-bd/product/4c17e4eb-68d2-4df3-9d5d-f38b134378e3"
+            },
+            bd: {
+                title: "ঢাকার বাহিরের কাজ",
+                amount: "300",
+                desc: "এই প্ল্যাটফর্মের মাধ্যমে আপনি ঢাকা শহরসহ সারা বাংলাদেশের যেকোনো স্থানে কাজ করতে পারবেন।",
+                link: "https://dash.zinipay.com/royal-men-bd/product/a9185eb0-7d89-4112-ab67-9ff04e854f1a"
+            },
+            abroad: {
+                title: "দেশের বাহিরে কাজ",
+                amount: "1500",
+                desc: "⚠️ সার্ভিস দেশসমূহ: সৌদি আরব, দুবাই, ওমান, কাতার, বাহরাইন, কুয়েত, মালেশিয়া, ইউরোপ, আমেরিকা। শুধুমাত্র প্রবাসীদের জন্য।",
+                link: "https://dash.zinipay.com/royal-men-bd/product/1038f4ab-3683-43a9-9945-86f9aeb08402"
+            }
+        };
+
+        let currentPlan = null;
+
+        // Navigation
+        function navigate(viewId) {
+            document.querySelectorAll('.app-view').forEach(view => {
+                view.classList.remove('active-view');
+            });
+            document.getElementById(viewId).classList.add('active-view');
+            
+            // Video Play Hack
+            if(viewId === 'view-about') {
+                document.querySelector('video').play().catch(e => {});
+            }
+        }
+
+        // Details View Setup
+        function openDetails(type) {
+            currentPlan = plans[type];
+            
+            const contentDiv = document.getElementById('detail-content');
+            contentDiv.innerHTML = `
+                <h1 style="color: var(--primary); font-family: 'Rajdhani'; font-size: 3rem;">${currentPlan.amount}৳</h1>
+                <h3 style="text-transform: uppercase;">${currentPlan.title}</h3>
+                <p style="color: #ccc; margin-top: 10px;">${currentPlan.desc}</p>
+            `;
+            
+            navigate('view-details');
+        }
+
+        // Redirect Logic
+        function proceedToPayment() {
+            if(!currentPlan) return;
+
+            // Show Loader
+            document.getElementById('loader').style.display = 'flex';
+            
+            // Artificial Delay for better UX then Redirect
+            setTimeout(() => {
+                window.location.href = currentPlan.link;
+            }, 1500);
+        }
+    </script>
 
 </body>
 </html>
