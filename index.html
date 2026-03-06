@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Men BD - Premium Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #9d50bb;
+            --accent: #26a5e4;
+            --glass: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: #050510;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Animated Background */
+        .bg-animate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1a1a3a 0%, #050510 100%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 150px); }
+        }
+
+        /* Main Glass Container */
+        .container {
+            width: 95%;
+            max-width: 420px;
+            padding: 30px 20px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo Animation */
+        .logo-box {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 15px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 210, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+        }
+
+        h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 32px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* Modern Feature Items */
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 12px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+            transform: translateX(5px);
+        }
+
+        .feature-card i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .feature-card span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Glow Telegram Button */
+        .btn-join {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 18px;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(38, 165, 228, 0.4);
+        }
+
+        .btn-join:hover {
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(38, 165, 228, 0.6);
+        }
+
+        .btn-join::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .trust-badge {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .trust-badge span i { color: #2ecc71; margin-right: 4px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-animate">
+        <div class="blob" style="top: 10%; left: 10%;"></div>
+        <div class="blob" style="bottom: 10%; right: 10%; background: var(--secondary);"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo-box">
+            <i class="fab fa-telegram-plane"></i>
+        </div>
+
+        <h1>Royal Men BD</h1>
+        <p class="subtitle">আপনার ক্যারিয়ারের সঠিক গাইডলাইন এবং নিশ্চিত আয়ের জন্য আজই আমাদের প্রিমিয়াম কমিউনিটিতে যোগ দিন।</p>
+
+        <div class="feature-list">
+            <div class="feature-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>প্রতি কাজে ২০০০+ টাকা ও যাতায়াত খরচ</span>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-calendar-check"></i>
+                <span>১ দিনে ২-৩ টি কাজ করার সুবর্ণ সুযোগ</span>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <span>অত্যন্ত সহজ রেজিস্ট্রেশন প্রক্রিয়া</span>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <span>২৪/৭ ডেডিকেটেড সাপোর্ট সিস্টেম</span>
+            </div>
+        </div>
+
+        <a href="https://t.me/+rl7HtSyCI4gyNmFl" class="btn-join">
+            <i class="fab fa-telegram"></i> টেলিগ্রামে জয়েন করুন
+        </a>
+
+        <div class="trust-badge">
+            <span><i class="fas fa-check-circle"></i> ৫০০০+ মেম্বার</span>
+            <span><i class="fas fa-shield-alt"></i> ১০০% নিরাপদ</span>
+        </div>
+    </div>
+
+</body>
+</html>
